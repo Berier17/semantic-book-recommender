@@ -44,4 +44,32 @@ I initially considered **TF-IDF (Term Frequency-Inverse Document Frequency)** bu
 **The Model:** `paraphrase-multilingual-MiniLM-L12-v2`
 * **Architecture:** BERT-based Transformer.
 * **Dimensions:** 384-dimensional dense vectors.
-* **Language Support:**
+* **Language Support:** 50+ languages (enabling the English-Arabic bridge).
+
+## 4. Usage & Workflows
+
+The system offers two distinct modes of operation depending on the user's needs:
+
+### Mode 1: Single Book Search (Book-to-Book)
+* **Function:** `get_recommendations(query, ...)`
+* **Input:** A specific book title (e.g., *"The Saga of Arthur Bandini"*).
+* **Process:** The model converts the query into a vector and finds the nearest neighbors in the shared vector space.
+* **Output:** Returns top 5 semantically similar books (English or Arabic).
+
+### Mode 2: Profile Personalization (Profile-to-Book)
+* **Function:** `get_profile_recommendations(my_df, ...)`
+* **Input:** Upload your personal `goodreads_export.csv`.
+* **Process (The "Taste Centroid"):**
+    1.  **Filter:** Selects books the user rated **4 stars or higher**.
+    2.  **Vectorize:** Converts these specific books into embeddings.
+    3.  **Average:** Calculates the **Mean Vector (Centroid)** of these books to represent the user's "Taste Profile."
+    4.  **Search:** Finds unread books closest to this centroid.
+
+## 5. Reproducibility
+
+This project is fully reproducible using Python.
+
+### Prerequisites:
+You will need the following libraries:
+```bash
+pip install pandas numpy scikit-learn sentence-transformers datasets
