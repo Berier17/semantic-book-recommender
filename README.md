@@ -1,4 +1,3 @@
-# semantic-book-recommender
 # Multilingual Semantic Book Recommender
 
 This project is an end-to-end **Natural Language Processing (NLP)** solution designed to provide personalized book recommendations across languages. By leveraging **Sentence Transformers (BERT)**, the model bridges the gap between English and Arabic literature, recommending books based on *semantic meaning* rather than just keyword matching.
